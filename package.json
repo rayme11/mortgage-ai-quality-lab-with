@@ -1,0 +1,29 @@
+{
+  "name": "mortgage-ai-quality-lab",
+  "version": "1.0.0",
+  "description": "Goal: Build a small, credible, end-to-end quality-engineering demonstration using synthetic mortgage data only. The project shows that you can combine data quality, API validation, AI-assisted test design, test automation, GitHub workflows, CI/CD quality gates, traceability, and responsible AI controls. Do not use real borrower, loan, credit, etc..",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "validate:data": "node scripts/validate-data.mjs data/synthetic-loans.csv",
+    "validate:data:negative": "node scripts/validate-data.mjs data/synthetic-loans-invalid.csv",
+    "ratios": "node scripts/loan-ratios.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rayme11/mortgage-ai-quality-lab-with.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/rayme11/mortgage-ai-quality-lab-with/issues"
+  },
+  "homepage": "https://github.com/rayme11/mortgage-ai-quality-lab-with#readme",
+  "devDependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "csv-parse": "^7.0.2"
+  }
+}
