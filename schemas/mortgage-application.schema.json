@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SyntheticMortgageApplication",
+  "description": "Data contract for a synthetic mortgage application intake record. Non-production demo only.",
+  "type": "object",
+  "required": [
+    "applicationId",
+    "loanPurpose",
+    "occupancy",
+    "propertyType",
+    "loanAmount",
+    "propertyValue",
+    "monthlyIncome",
+    "monthlyDebt",
+    "creditScoreBand",
+    "status",
+    "privacyConsent",
+    "electronicConsent",
+    "submittedAt"
+  ],
+  "properties": {
+    "applicationId": { "type": "string", "pattern": "^APP-[0-9]{8}$" },
+    "loanPurpose": { "enum": ["purchase", "refinance"] },
+    "occupancy": { "enum": ["primary", "second_home", "investment"] },
+    "propertyType": { "enum": ["single_family", "condo", "townhome", "multi_family"] },
+    "loanAmount": { "type": "number", "minimum": 0 },
+    "propertyValue": { "type": "number", "exclusiveMinimum": 0 },
+    "monthlyIncome": { "type": "number", "minimum": 0 },
+    "monthlyDebt": { "type": "number", "minimum": 0 },
+    "creditScoreBand": { "enum": ["below_620", "620_679", "680_739", "740_plus"] },
+    "status": { "enum": ["draft", "submitted", "in_review", "withdrawn"] },
+    "privacyConsent": { "type": "boolean" },
+    "electronicConsent": { "type": "boolean" },
+    "referralSource": { "type": "string" },
+    "submittedAt": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}
