@@ -8,7 +8,7 @@
     "validate:data": "node scripts/validate-data.mjs data/synthetic-loans.csv",
     "validate:data:negative": "node scripts/validate-data.mjs data/synthetic-loans-invalid.csv",
     "ratios": "node scripts/loan-ratios.mjs",
-    "test:report": "playwright show-report",
+    "test:report": "playwright show-report artifacts/playwright-report",
     "mock:api": "node mock/server.mjs"
   },
   "repository": {
