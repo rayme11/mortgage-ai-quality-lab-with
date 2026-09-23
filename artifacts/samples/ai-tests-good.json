@@ -1,0 +1,38 @@
+[
+  {
+    "testId": "AI-TC-001",
+    "requirementId": "RQ-005",
+    "risk": "A submitted application could proceed without required consent.",
+    "precondition": "Synthetic application payload is valid except privacyConsent is false.",
+    "input": { "status": "submitted", "privacyConsent": false, "electronicConsent": true },
+    "expectedResult": "POST /applications returns HTTP 400 with error CONSENT_REQUIRED and the record is not persisted.",
+    "testType": "negative-api"
+  },
+  {
+    "testId": "AI-TC-002",
+    "requirementId": "RQ-007",
+    "risk": "A network retry creates two loan files for one application, breaking reconciliation.",
+    "precondition": "A valid synthetic application has already been submitted once.",
+    "input": { "note": "POST the identical payload a second time" },
+    "expectedResult": "Second response is HTTP 200 with the same applicationId and idempotentReplay=true; exactly one record exists.",
+    "testType": "idempotency-api"
+  },
+  {
+    "testId": "AI-TC-003",
+    "requirementId": "RQ-006",
+    "risk": "An unauthenticated caller could create application records.",
+    "precondition": "No Authorization header is present.",
+    "input": { "note": "POST a valid synthetic payload without a bearer token" },
+    "expectedResult": "HTTP 401 with error UNAUTHORIZED; no record is persisted.",
+    "testType": "authorization-api"
+  },
+  {
+    "testId": "AI-TC-004",
+    "requirementId": "RQ-003",
+    "risk": "An unrecognized occupancy value corrupts downstream mappings.",
+    "precondition": "Payload is otherwise valid.",
+    "input": { "occupancy": "vacation_home" },
+    "expectedResult": "HTTP 400 CONTRACT_VIOLATION naming occupancy as the failing field.",
+    "testType": "negative-api"
+  }
+]

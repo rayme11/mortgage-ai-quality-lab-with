@@ -1,0 +1,79 @@
+{
+  "source": "artifacts/samples/ai-tests-bad.json",
+  "evaluatedAt": "2026-09-23T23:06:45.855Z",
+  "syntheticDataOnly": true,
+  "total": 4,
+  "acceptedForReview": 1,
+  "rejected": 3,
+  "note": "Acceptance means eligible for human review, not approved for the test suite.",
+  "results": [
+    {
+      "testId": "AI-TC-101",
+      "score": 6,
+      "checks": {
+        "hasTestId": true,
+        "requirementTraceability": false,
+        "hasRisk": true,
+        "hasPrecondition": true,
+        "hasExpectedResult": true,
+        "hasTestType": true,
+        "safeScope": true
+      },
+      "reasons": [
+        "unknown requirementId: RQ-042"
+      ],
+      "acceptedForReview": false
+    },
+    {
+      "testId": "AI-TC-102",
+      "score": 6,
+      "checks": {
+        "hasTestId": true,
+        "requirementTraceability": true,
+        "hasRisk": true,
+        "hasPrecondition": true,
+        "hasExpectedResult": true,
+        "hasTestType": true,
+        "safeScope": false
+      },
+      "reasons": [
+        "forbidden scope term: \"approve\""
+      ],
+      "acceptedForReview": false
+    },
+    {
+      "testId": "AI-TC-103",
+      "score": 4,
+      "checks": {
+        "hasTestId": true,
+        "requirementTraceability": true,
+        "hasRisk": false,
+        "hasPrecondition": true,
+        "hasExpectedResult": false,
+        "hasTestType": false,
+        "safeScope": true
+      },
+      "reasons": [
+        "missing risk",
+        "missing expectedResult",
+        "missing testType"
+      ],
+      "acceptedForReview": false
+    },
+    {
+      "testId": "AI-TC-104",
+      "score": 7,
+      "checks": {
+        "hasTestId": true,
+        "requirementTraceability": true,
+        "hasRisk": true,
+        "hasPrecondition": true,
+        "hasExpectedResult": true,
+        "hasTestType": true,
+        "safeScope": true
+      },
+      "reasons": [],
+      "acceptedForReview": true
+    }
+  ]
+}
