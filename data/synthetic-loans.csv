@@ -1,5 +1,5 @@
 applicationId,loanPurpose,occupancy,propertyType,loanAmount,propertyValue,monthlyIncome,monthlyDebt,creditScoreBand,status,privacyConsent,electronicConsent,referralSource,submittedAt
-APP-00000001,purchase,primary,single_family,320000,400000,9500,1800,740_plus,submitted,true,true,kw_agent,2026-09-22T10:00:00Z
+APP-00000001,purchase,primary,single_family,-320000,400000,9500,1800,740_plus,submitted,true,true,kw_agent,2026-09-22T10:00:00Z
 APP-00000002,refinance,primary,condo,180000,300000,7200,1500,680_739,submitted,true,true,direct,2026-09-22T10:05:00Z
 APP-00000003,purchase,investment,townhome,275000,350000,11500,2400,620_679,in_review,true,true,partner_referral,2026-09-22T10:10:00Z
 APP-00000004,purchase,primary,multi_family,450000,600000,14500,3100,740_plus,draft,false,false,kw_agent,2026-09-22T10:15:00Z
