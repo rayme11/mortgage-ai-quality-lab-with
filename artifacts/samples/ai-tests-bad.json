@@ -1,0 +1,35 @@
+[
+  {
+    "testId": "AI-TC-101",
+    "requirementId": "RQ-042",
+    "risk": "Application might not be processed.",
+    "precondition": "None.",
+    "input": { "status": "submitted" },
+    "expectedResult": "Application is processed correctly.",
+    "testType": "api"
+  },
+  {
+    "testId": "AI-TC-102",
+    "requirementId": "RQ-005",
+    "risk": "Borrower could be approved without checking credit.",
+    "precondition": "Payload is valid.",
+    "input": { "creditScoreBand": "740_plus" },
+    "expectedResult": "System should approve the application.",
+    "testType": "negative-api"
+  },
+  {
+    "testId": "AI-TC-103",
+    "requirementId": "RQ-004",
+    "precondition": "Payload exists.",
+    "input": { "loanAmount": -1 }
+  },
+  {
+    "testId": "AI-TC-104",
+    "requirementId": "RQ-001",
+    "risk": "Malformed application IDs break reconciliation between POS and LOS.",
+    "precondition": "Payload is otherwise valid.",
+    "input": { "applicationId": "APP-XYZ" },
+    "expectedResult": "HTTP 400 CONTRACT_VIOLATION naming applicationId.",
+    "testType": "negative-api"
+  }
+]
