@@ -1,0 +1,61 @@
+name: Quality Gates
+
+on:
+  push:
+    branches: [main, 'chapter/**']
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Gate 1 — approved synthetic data must validate
+        run: npm run validate:data
+
+      - name: Gate 2 — invalid dataset must be rejected (gate self-check)
+        run: |
+          if npm run validate:data:negative; then
+            echo "::error::The invalid dataset PASSED validation — the gate is broken"
+            exit 1
+          fi
+          echo "Invalid dataset correctly rejected."
+
+      - name: Start mock mortgage API
+        run: |
+          npm run mock:api &
+          for i in $(seq 1 30); do
+            if curl -sf http://localhost:4010/applications/nonexistent > /dev/null; then
+              echo "Mock API is up"; exit 0
+            fi
+            sleep 1
+          done
+          echo "::error::Mock API failed to start"
+          exit 1
+
+      - name: Gate 3 — Playwright API suite
+        run: npm test
+
+      - name: Gate 4 — every test maps to a requirement (traceability)
+        run: node scripts/check-traceability.mjs
+
+      - name: Upload quality evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-evidence-${{ github.run_number }}
+          path: |
+            artifacts/
+          retention-days: 30
