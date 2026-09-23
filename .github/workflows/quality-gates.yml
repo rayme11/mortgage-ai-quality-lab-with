@@ -35,14 +35,15 @@ jobs:
 
       - name: Start mock mortgage API
         run: |
-          npm run mock:api &
+          npm run mock:api > mock-api.log 2>&1 &
           for i in $(seq 1 30); do
-            if curl -sf http://localhost:4010/applications/nonexistent > /dev/null; then
+            if curl -s -o /dev/null http://localhost:4010/applications/healthcheck; then
               echo "Mock API is up"; exit 0
             fi
             sleep 1
           done
           echo "::error::Mock API failed to start"
+          cat mock-api.log
           exit 1
 
       - name: Gate 3 — Playwright API suite
