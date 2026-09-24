@@ -4,8 +4,8 @@ One row per experiment run. Reproducibility rule: model name, version, prompt ve
 
 | Date | Model | Prompt Version | Input Type | Cases Generated | Passed Deterministic Checks | Human Review Decision | Notes |
 |---|---|---|---|---:|---:|---|---|
-| 2026-09-23 | _enter model/version_ | A | Synthetic requirement text | _n_ | _n_ | _accept/revise/reject_ | _e.g., prose wrapper, invented requirement IDs_ |
-| 2026-09-23 | _enter model/version_ | B | Synthetic requirement text | _n_ | _n_ | _accept/revise/reject_ | _e.g., clean JSON, all RQ-mapped_ |
+| 2026-09-23 | Chat Playground (record exact deployment in your notes) | A | Synthetic requirement text | 6 | 0 | Reject | Wrong schema (id/description/expected_output), invented fields (risk_assessment_score), realistic fake PII (names, raw credit scores), forbidden eligibility language |
+| 2026-09-23 | Chat Playground (same deployment as A) | B | Synthetic requirement text | 13 | 13 | Accept for review | Clean JSON array, correct schema, all requirementIds within RQ-001..008, no forbidden scope terms |
 
 ## How to fill this in
 

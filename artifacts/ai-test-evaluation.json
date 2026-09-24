@@ -1,32 +1,15 @@
 {
-  "source": "artifacts/samples/ai-tests-bad.json",
-  "evaluatedAt": "2026-09-23T23:06:45.855Z",
+  "source": "artifacts/foundry/prompt-b-output.json",
+  "evaluatedAt": "2026-09-24T00:25:15.959Z",
   "syntheticDataOnly": true,
-  "total": 4,
-  "acceptedForReview": 1,
-  "rejected": 3,
+  "total": 13,
+  "acceptedForReview": 13,
+  "rejected": 0,
   "note": "Acceptance means eligible for human review, not approved for the test suite.",
   "results": [
     {
-      "testId": "AI-TC-101",
-      "score": 6,
-      "checks": {
-        "hasTestId": true,
-        "requirementTraceability": false,
-        "hasRisk": true,
-        "hasPrecondition": true,
-        "hasExpectedResult": true,
-        "hasTestType": true,
-        "safeScope": true
-      },
-      "reasons": [
-        "unknown requirementId: RQ-042"
-      ],
-      "acceptedForReview": false
-    },
-    {
-      "testId": "AI-TC-102",
-      "score": 6,
+      "testId": "TC-001",
+      "score": 7,
       "checks": {
         "hasTestId": true,
         "requirementTraceability": true,
@@ -34,34 +17,178 @@
         "hasPrecondition": true,
         "hasExpectedResult": true,
         "hasTestType": true,
-        "safeScope": false
+        "safeScope": true
       },
-      "reasons": [
-        "forbidden scope term: \"approve\""
-      ],
-      "acceptedForReview": false
+      "reasons": [],
+      "acceptedForReview": true
     },
     {
-      "testId": "AI-TC-103",
-      "score": 4,
+      "testId": "TC-002",
+      "score": 7,
       "checks": {
         "hasTestId": true,
         "requirementTraceability": true,
-        "hasRisk": false,
+        "hasRisk": true,
         "hasPrecondition": true,
-        "hasExpectedResult": false,
-        "hasTestType": false,
+        "hasExpectedResult": true,
+        "hasTestType": true,
         "safeScope": true
       },
-      "reasons": [
-        "missing risk",
-        "missing expectedResult",
-        "missing testType"
-      ],
-      "acceptedForReview": false
+      "reasons": [],
+      "acceptedForReview": true
     },
     {
-      "testId": "AI-TC-104",
+      "testId": "TC-003",
+      "score": 7,
+      "checks": {
+        "hasTestId": true,
+        "requirementTraceability": true,
+        "hasRisk": true,
+        "hasPrecondition": true,
+        "hasExpectedResult": true,
+        "hasTestType": true,
+        "safeScope": true
+      },
+      "reasons": [],
+      "acceptedForReview": true
+    },
+    {
+      "testId": "TC-004",
+      "score": 7,
+      "checks": {
+        "hasTestId": true,
+        "requirementTraceability": true,
+        "hasRisk": true,
+        "hasPrecondition": true,
+        "hasExpectedResult": true,
+        "hasTestType": true,
+        "safeScope": true
+      },
+      "reasons": [],
+      "acceptedForReview": true
+    },
+    {
+      "testId": "TC-005",
+      "score": 7,
+      "checks": {
+        "hasTestId": true,
+        "requirementTraceability": true,
+        "hasRisk": true,
+        "hasPrecondition": true,
+        "hasExpectedResult": true,
+        "hasTestType": true,
+        "safeScope": true
+      },
+      "reasons": [],
+      "acceptedForReview": true
+    },
+    {
+      "testId": "TC-006",
+      "score": 7,
+      "checks": {
+        "hasTestId": true,
+        "requirementTraceability": true,
+        "hasRisk": true,
+        "hasPrecondition": true,
+        "hasExpectedResult": true,
+        "hasTestType": true,
+        "safeScope": true
+      },
+      "reasons": [],
+      "acceptedForReview": true
+    },
+    {
+      "testId": "TC-007",
+      "score": 7,
+      "checks": {
+        "hasTestId": true,
+        "requirementTraceability": true,
+        "hasRisk": true,
+        "hasPrecondition": true,
+        "hasExpectedResult": true,
+        "hasTestType": true,
+        "safeScope": true
+      },
+      "reasons": [],
+      "acceptedForReview": true
+    },
+    {
+      "testId": "TC-008",
+      "score": 7,
+      "checks": {
+        "hasTestId": true,
+        "requirementTraceability": true,
+        "hasRisk": true,
+        "hasPrecondition": true,
+        "hasExpectedResult": true,
+        "hasTestType": true,
+        "safeScope": true
+      },
+      "reasons": [],
+      "acceptedForReview": true
+    },
+    {
+      "testId": "TC-009",
+      "score": 7,
+      "checks": {
+        "hasTestId": true,
+        "requirementTraceability": true,
+        "hasRisk": true,
+        "hasPrecondition": true,
+        "hasExpectedResult": true,
+        "hasTestType": true,
+        "safeScope": true
+      },
+      "reasons": [],
+      "acceptedForReview": true
+    },
+    {
+      "testId": "TC-010",
+      "score": 7,
+      "checks": {
+        "hasTestId": true,
+        "requirementTraceability": true,
+        "hasRisk": true,
+        "hasPrecondition": true,
+        "hasExpectedResult": true,
+        "hasTestType": true,
+        "safeScope": true
+      },
+      "reasons": [],
+      "acceptedForReview": true
+    },
+    {
+      "testId": "TC-011",
+      "score": 7,
+      "checks": {
+        "hasTestId": true,
+        "requirementTraceability": true,
+        "hasRisk": true,
+        "hasPrecondition": true,
+        "hasExpectedResult": true,
+        "hasTestType": true,
+        "safeScope": true
+      },
+      "reasons": [],
+      "acceptedForReview": true
+    },
+    {
+      "testId": "TC-012",
+      "score": 7,
+      "checks": {
+        "hasTestId": true,
+        "requirementTraceability": true,
+        "hasRisk": true,
+        "hasPrecondition": true,
+        "hasExpectedResult": true,
+        "hasTestType": true,
+        "safeScope": true
+      },
+      "reasons": [],
+      "acceptedForReview": true
+    },
+    {
+      "testId": "TC-013",
       "score": 7,
       "checks": {
         "hasTestId": true,
