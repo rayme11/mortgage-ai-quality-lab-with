@@ -1,0 +1,230 @@
+[
+  {
+    "testId": "TC-001",
+    "requirementId": "RQ-001",
+    "risk": "High",
+    "precondition": "API endpoint is available",
+    "input": {
+      "applicant": {},
+      "loanDetails": {
+        "loanAmount": 250000,
+        "propertyType": "SingleFamily"
+      }
+    },
+    "expectedResult": "API returns error for missing required applicant fields",
+    "testType": "Negative"
+  },
+  {
+    "testId": "TC-002",
+    "requirementId": "RQ-001",
+    "risk": "Medium",
+    "precondition": "API endpoint is available",
+    "input": {
+      "applicant": {
+        "firstName": "Test",
+        "lastName": "User",
+        "income": 100000
+      },
+      "loanDetails": {
+        "loanAmount": 250000,
+        "propertyType": "SingleFamily"
+      }
+    },
+    "expectedResult": "API accepts application and returns application ID",
+    "testType": "Positive"
+  },
+  {
+    "testId": "TC-003",
+    "requirementId": "RQ-002",
+    "risk": "Medium",
+    "precondition": "API endpoint is available",
+    "input": {
+      "applicant": {
+        "firstName": "John",
+        "lastName": "Smith",
+        "income": -5000
+      },
+      "loanDetails": {
+        "loanAmount": 300000,
+        "propertyType": "SingleFamily"
+      }
+    },
+    "expectedResult": "API returns error for invalid income value",
+    "testType": "Negative"
+  },
+  {
+    "testId": "TC-004",
+    "requirementId": "RQ-002",
+    "risk": "Medium",
+    "precondition": "API endpoint is available",
+    "input": {
+      "applicant": {
+        "firstName": "Alice",
+        "lastName": "Doe",
+        "income": 50000
+      },
+      "loanDetails": {
+        "loanAmount": 0,
+        "propertyType": "SingleFamily"
+      }
+    },
+    "expectedResult": "API returns error for invalid loanAmount value",
+    "testType": "Negative"
+  },
+  {
+    "testId": "TC-005",
+    "requirementId": "RQ-003",
+    "risk": "High",
+    "precondition": "API endpoint is available",
+    "input": {
+      "applicant": {
+        "firstName": "Test",
+        "lastName": "Consent",
+        "income": 75000
+      },
+      "loanDetails": {
+        "loanAmount": 120000,
+        "propertyType": "Condo"
+      },
+      "consent": false
+    },
+    "expectedResult": "API returns error when consent is not given",
+    "testType": "Negative"
+  },
+  {
+    "testId": "TC-006",
+    "requirementId": "RQ-003",
+    "risk": "High",
+    "precondition": "API endpoint is available",
+    "input": {
+      "applicant": {
+        "firstName": "Consent",
+        "lastName": "Given",
+        "income": 50000
+      },
+      "loanDetails": {
+        "loanAmount": 95000,
+        "propertyType": "Townhouse"
+      },
+      "consent": true
+    },
+    "expectedResult": "API accepts application",
+    "testType": "Positive"
+  },
+  {
+    "testId": "TC-007",
+    "requirementId": "RQ-004",
+    "risk": "Medium",
+    "precondition": "API endpoint is available",
+    "input": "Malformed JSON",
+    "expectedResult": "API returns 400 Bad Request or appropriate parsing error message",
+    "testType": "Negative"
+  },
+  {
+    "testId": "TC-008",
+    "requirementId": "RQ-004",
+    "risk": "Medium",
+    "precondition": "API endpoint is available",
+    "input": {
+      "applicant": {
+        "firstName": "Proper",
+        "lastName": "Format",
+        "income": 90000
+      },
+      "loanDetails": {
+        "loanAmount": 250000,
+        "propertyType": "SingleFamily"
+      }
+    },
+    "expectedResult": "API responds with 200 OK and application ID",
+    "testType": "Positive"
+  },
+  {
+    "testId": "TC-009",
+    "requirementId": "RQ-005",
+    "risk": "Medium",
+    "precondition": "API endpoint is available and application already exists",
+    "input": {
+      "applicant": {
+        "firstName": "Dup",
+        "lastName": "Test",
+        "income": 100000
+      },
+      "loanDetails": {
+        "loanAmount": 250000,
+        "propertyType": "SingleFamily"
+      }
+    },
+    "expectedResult": "API identifies duplicate application and returns error or duplicate warning",
+    "testType": "Negative"
+  },
+  {
+    "testId": "TC-010",
+    "requirementId": "RQ-006",
+    "risk": "Medium",
+    "precondition": "API is experiencing transient errors",
+    "input": {
+      "applicant": {
+        "firstName": "Retry",
+        "lastName": "Test",
+        "income": 80000
+      },
+      "loanDetails": {
+        "loanAmount": 220000,
+        "propertyType": "SingleFamily"
+      }
+    },
+    "expectedResult": "API supports retry with idempotency key and does not create duplicate applications",
+    "testType": "Positive"
+  },
+  {
+    "testId": "TC-011",
+    "requirementId": "RQ-007",
+    "risk": "High",
+    "precondition": "User does not have API role authorization",
+    "input": {
+      "applicant": {
+        "firstName": "Unauthorized",
+        "lastName": "User",
+        "income": 30000
+      },
+      "loanDetails": {
+        "loanAmount": 100000,
+        "propertyType": "SingleFamily"
+      }
+    },
+    "expectedResult": "API returns authorization error",
+    "testType": "Negative"
+  },
+  {
+    "testId": "TC-012",
+    "requirementId": "RQ-008",
+    "risk": "High",
+    "precondition": "API endpoint is available and application is submitted",
+    "input": {
+      "applicant": {
+        "firstName": "Audit",
+        "lastName": "Trail",
+        "income": 100000
+      },
+      "loanDetails": {
+        "loanAmount": 300000,
+        "propertyType": "SingleFamily"
+      },
+      "consent": true
+    },
+    "expectedResult": "API logs the transaction for auditability",
+    "testType": "Positive"
+  },
+  {
+    "testId": "TC-013",
+    "requirementId": "RQ-008",
+    "risk": "Medium",
+    "precondition": "Application exists in the system",
+    "input": {
+      "applicationId": "123456"
+    },
+    "expectedResult": "API returns correct, unaltered application data ensuring data integrity",
+    "testType": "Positive"
+  }
+]

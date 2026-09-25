@@ -1,0 +1,138 @@
+[
+  {
+    "id": "TC1",
+    "description": "Valid mortgage application",
+    "input": {
+      "applicant": {
+        "name": "John Doe",
+        "income": 90000,
+        "credit_score": 740,
+        "loan_amount": 350000,
+        "property_value": 450000
+      }
+    },
+    "expected_output": {
+      "status": "Application Submitted",
+      "application_id": "UUID",
+      "risk_assessment_score": "Present"
+    }
+  },
+  {
+    "id": "TC2",
+    "description": "Missing required fields (income not provided)",
+    "input": {
+      "applicant": {
+        "name": "Anne Smith",
+        "credit_score": 720,
+        "loan_amount": 250000,
+        "property_value": 400000
+      }
+    },
+    "expected_output": {
+      "status": "Error",
+      "error_message": "Income is a required field."
+    }
+  },
+  {
+    "id": "TC3",
+    "description": "No requirement IDs in response",
+    "input": {
+      "applicant": {
+        "name": "Test Applicant",
+        "income": 75000,
+        "credit_score": 750,
+        "loan_amount": 200000,
+        "property_value": 250000
+      }
+    },
+    "expected_output": {
+      "status": "Application Submitted",
+      "application_id": "UUID",
+      "requirement_id": "Absent"
+    }
+  },
+  {
+    "id": "TC4",
+    "description": "No risk statement in response",
+    "input": {
+      "applicant": {
+        "name": "Test Applicant",
+        "income": 85000,
+        "credit_score": 720,
+        "loan_amount": 300000,
+        "property_value": 350000
+      }
+    },
+    "expected_output": {
+      "status": "Application Submitted",
+      "risk_statement": "Absent"
+    }
+  },
+  {
+    "id": "TC5",
+    "description": "Inconsistent response structure",
+    "input": {
+      "applicant": {
+        "name": "Chris Lee",
+        "income": 120000,
+        "credit_score": 800,
+        "loan_amount": 500000,
+        "property_value": 600000
+      }
+    },
+    "expected_output": {
+      "status_field_variation": ["application_status", "status"],
+      "wrapping_variation": ["top-level fields", "data object"]
+    }
+  },
+  {
+    "id": "TC6",
+    "description": "Drift into approval/eligibility language",
+    "input": {
+      "applicant": {
+        "name": "Diana Prince",
+        "income": 85000,
+        "credit_score": 700,
+        "loan_amount": 300000,
+        "property_value": 350000
+      }
+    },
+    "expected_output": {
+      "disallowed_phrases": ["You are approved", "You are eligible"]
+    }
+  },
+  {
+    "id": "TC7",
+    "description": "Invalid data formats",
+    "input": {
+      "applicant": {
+        "name": "Bill West",
+        "income": "eighty thousand",
+        "credit_score": "seven hundred",
+        "loan_amount": 200000,
+        "property_value": 300000
+      }
+    },
+    "expected_output": {
+      "status": "Error",
+      "error_message": "Invalid data type for income or credit_score."
+    }
+  },
+  {
+    "id": "TC8",
+    "description": "Negative loan amount",
+    "input": {
+      "applicant": {
+        "name": "Sara Green",
+        "income": 67000,
+        "credit_score": 670,
+        "loan_amount": -150000,
+        "property_value": 250000
+      }
+    },
+    "expected_output": {
+      "status": "Error",
+      "error_message": "Loan amount must be positive."
+    }
+  }
+]
